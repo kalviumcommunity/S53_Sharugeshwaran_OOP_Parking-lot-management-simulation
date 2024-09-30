@@ -7,7 +7,7 @@ public class Simulation {
     private final FeeCalculator feeCalculator;
 
     public Simulation() {
-        this.parkingLot = new ParkingLot(5);  // Create a parking lot with 5 spaces
+        this.parkingLot = new ParkingLot(5);  
         this.feeCalculator = new FeeCalculator();
     }
 
@@ -59,7 +59,7 @@ public class Simulation {
                         // Calculate the fee
                         Duration parkingDuration = Duration.between(space.getStartTime(), LocalDateTime.now());
                         long hoursParked = parkingDuration.toHours();
-                        double fee = feeCalculator.calculateFee(space.getVehicle(), (int) hoursParked);
+                        double fee = FeeCalculator.calculateFee(space.getVehicle(), (int) hoursParked);
 
                         // Vacate the space
                         parkingLot.vacateSpace(spaceNumber);
