@@ -2,9 +2,10 @@ import java.time.LocalDateTime;
 
 public class ParkingSpace {
     private final int number;
-    private boolean occupied;
+    private  boolean occupied;
     private Vehicle vehicle;
     private LocalDateTime startTime;
+    private static int totalVehiclesParked = 0;
 
     public ParkingSpace(int number) {
         this.number = number;
@@ -24,13 +25,15 @@ public class ParkingSpace {
     public void park(Vehicle vehicle) {
         this.vehicle = vehicle;
         this.occupied = true;
-        this.startTime = LocalDateTime.now();  // Record the start time when the vehicle is parked
+        this.startTime = LocalDateTime.now(); 
+        totalVehiclesParked++; // Record the start time when the vehicle is parked
     }
 
     public void vacate() {
         this.vehicle = null;
         this.occupied = false;
-        this.startTime = null;  // Reset start time
+        this.startTime = null;  
+        totalVehiclesParked--;// Reset start time
     }
 
     public Vehicle getVehicle() {
